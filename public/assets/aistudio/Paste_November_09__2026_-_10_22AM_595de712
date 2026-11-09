@@ -1,0 +1,452 @@
+Common Prompt: 
+You are a senior full-stack engineer and UI/UX designer. Build the complete front-end interface (a fully clickable, professional prototype) for a web platform called "BAUST Career Bridge".
+
+=== 1. PROJECT CONTEXT ===
+Bangladesh Army University of Science and Technology (BAUST) has no central digital platform connecting current students with alumni. Problems:
+- No structured mentorship (career planning, higher studies, CV review, interview prep).
+- No central alumni database, so students cannot find alumni working in govt, private, multinational, research or business sectors.
+- No profile verification, so fake profiles are common on social media.
+- Alumni have no digital channel to request transcripts, certificates or official documents from the university.
+
+BAUST Career Bridge is a web and mobile-responsive platform connecting Alumni, Current Students and University Administration. It is not just a chat app; it is a complete Career Support & Administrative Network System.
+
+=== 2. TECH STACK ===
+- React + TypeScript + Vite
+- Tailwind CSS
+- React Router (multi-page navigation)
+- lucide-react for icons
+- recharts for charts
+- Use realistic MOCK DATA only (no backend). Keep all mock data in /src/data/ as separate files.
+- Use localStorage to persist demo state (login role, requests, messages).
+
+=== 3. DESIGN SYSTEM (strictly follow) ===
+- Style: clean, modern, trustworthy, university/corporate look. Not childish.
+- Primary: deep navy (#0F2A4A). Secondary: army green (#2E5E3E). Accent: gold (#C9A227). Background: soft gray (#F5F7FA). Cards: white, rounded-2xl, soft shadow.
+- Font: "Inter" for English and "Noto Sans Bengali" for Bangla text.
+- Consistent spacing, 8px grid, clear typography hierarchy.
+- Fully responsive (mobile, tablet, desktop). Sidebar on desktop, bottom nav or hamburger on mobile.
+- Include loading skeletons, empty states, hover and focus states, and smooth subtle transitions.
+- Status badges with colors: Pending (amber), Approved (green), Rejected (red), In Progress (blue).
+- Add a simple language toggle (EN / বাংলা) in the navbar for the main UI labels.
+
+=== 4. USER ROLES ===
+1. Student  2. Alumni  3. Admin (University Administration)
+Add a "Demo Role Switcher" (floating button) so reviewers can instantly switch between Student, Alumni and Admin without logging in again.
+
+=== 5. PAGES TO BUILD ===
+
+A. PUBLIC PAGES
+1. Landing Page: hero section with headline, tagline, CTA buttons (Login / Register); problem vs solution section; 4 feature cards (Verified Directory, Mentorship, Direct Chat, Admin Desk); live stats counters (Alumni, Students, Companies, Mentorship Sessions); "How it works" in 3 steps; featured alumni carousel; footer with BAUST info.
+2. Login Page: email/university ID and password, role selection.
+3. Registration Page: multi-step form. Step 1: role (Student or Alumni). Step 2: BAUST ID, department, batch, passing year. Step 3: upload ID card or document for verification. Step 4: success screen saying "Your profile is pending admin verification".
+
+B. STUDENT PAGES
+4. Student Dashboard: welcome banner, quick stats, recommended alumni, upcoming mentorship sessions, recent messages, career resources.
+5. Alumni Directory (Search and Filter): search bar plus filters for Job Sector (Government, Private, Abroad, Research, Business), Company, Batch, Department, Location. Alumni cards with photo, name, verified badge, designation, company, batch, "View Profile" and "Message" buttons. Grid/list toggle and pagination.
+6. Alumni Profile Page: verified badge, bio, current job, work experience timeline, education, skills, achievements, contact/connect button, "Request Mentorship" button, available session slots.
+7. Mentorship Module: tabs for Find Mentor, My Requests, Upcoming Sessions, Past Sessions. Request modal (topic: CV Review / Interview Prep / Higher Studies / Career Guidance). Online session cards with date, time and meeting-link button.
+8. In-App Chat: WhatsApp/Messenger-style UI with conversation list, message thread, typing indicator, attachment button (for CV), online status.
+9. My Profile and Settings (edit profile, skills, CV upload, privacy settings).
+
+C. ALUMNI PAGES
+10. Alumni Dashboard: profile completion progress, mentorship requests received (accept/decline), upcoming sessions, impact stats (students mentored), recent service requests.
+11. University Admin Desk (service requests): form to request Transcript, Certificate, Testimonial, Others (document type, copies, delivery method, purpose, payment info mockup). "My Requests" table with a tracking timeline (Submitted → Under Review → Approved → Ready/Delivered) and status badges.
+12. Alumni Mentor Settings: set available time slots, topics, and mentoring on/off toggle.
+
+D. ADMIN PAGES
+13. Admin Dashboard: analytics cards plus charts (registrations over time, alumni by job sector as a pie chart, alumni by batch as a bar chart, requests by status).
+14. Verification Queue: table of pending registrations with preview of uploaded document, Approve / Reject (with reason) actions.
+15. User Management: list of all alumni and students with search, filter, block/unblock.
+16. Service Request Management: table of alumni requests, change status, add remarks, and a detail drawer.
+17. Announcements: create and publish notices/events visible to all users.
+
+E. COMMON FEATURES
+- Notification bell with dropdown (mentorship accepted, request status updated, new message).
+- Global 404 page and a protected-route structure per role.
+- Toast notifications for all actions.
+
+=== 6. MOCK DATA ===
+Create at least 20 realistic alumni (Bangladeshi names; departments like CSE, EEE, Civil, Textile, BBA; companies such as Grameenphone, Brain Station 23, BJIT, Samsung R&D, bKash, Government cadre, Universities abroad; batches 2015-2024), 10 students, 15 service requests with mixed statuses, 10 mentorship sessions, and chat conversations. Use placeholder avatars (e.g. https://i.pravatar.cc or initials avatars).
+
+=== 7. CODE ARCHITECTURE (VERY IMPORTANT) ===
+Three teammates will later "remix" this project and each will add or upgrade separate features. So the code MUST be modular and conflict-free:
+- Folder structure: /src/components (shared UI), /src/pages/{public,student,alumni,admin}, /src/layouts, /src/data, /src/hooks, /src/routes, /src/utils, /src/types.
+- One page = one file. Reusable components (Button, Card, Badge, Modal, Table, Input, Avatar, Sidebar, Navbar, StatCard, Toast) built once in /src/components/ui.
+- Centralized route config in /src/routes and a central theme/design-token config so global styling changes are easy.
+- Clean comments marking where backend/API integration will happen later (e.g. "// TODO: replace with API call").
+- No placeholder "coming soon" pages: every listed page must be fully designed and functional with mock data.
+
+=== 8. OUTPUT EXPECTATION ===
+Generate the complete working app with all pages above, polished enough to present to a university faculty panel. After the code, give a short summary of the page list and routes.
+
+
+
+
+
+
+
+
+1.Mentorship Module
+Student Id: 0802420105101028
+
+Prompt: You are continuing work on the existing project "BAUST Career Bridge" (React + TypeScript + Vite + Tailwind + React Router + lucide-react + recharts, mock data only, localStorage persistence).
+
+=== STRICT SCOPE RULES ===
+- Work ONLY on the Mentorship module (student side + the alumni side needed to complete the mentorship flow).
+- Do NOT change the design system (navy #0F2A4A, army green #2E5E3E, gold #C9A227, Inter / Noto Sans Bengali), the folder structure, the Landing/Auth/Chat/Admin Desk/Admin pages, or existing shared UI components. Reuse them (Button, Card, Badge, Modal, Table, Input, Avatar, Toast, etc.). Only add new components when needed, inside /src/components/mentorship/.
+- Keep all existing mock data. Extend it only in new files: /src/data/mentors.ts, /src/data/mentorshipRequests.ts, /src/data/cvReviews.ts.
+- Keep it modular: one page = one file under /src/pages/student/mentorship/ and /src/pages/alumni/mentorship/. Use a single shared store (/src/hooks/useMentorshipStore.ts, React Context + localStorage) so student and alumni views stay in sync via the existing Demo Role Switcher. Add "// TODO: replace with API call" comments where the backend will go.
+- Fully responsive, with loading skeletons, empty states, toasts, and EN/বাংলা labels for main UI text.
+
+=== GOAL ===
+Build a complete, professional Mentorship system where a student can find alumni by sector or skill, view their profile, request mentorship, run a session (chat or call), mark it complete, rate the mentor, and get CV reviews with rating and feedback. The alumni side can accept or reject requests, run sessions, and review CVs.
+
+=== 1. MENTORSHIP HOME (student): /student/mentorship ===
+Tabs (with count badges):
+1. Find Mentor
+2. My Requests (Pending)
+3. Active Sessions (Accepted / Upcoming / Ongoing)
+4. Completed
+5. Rejected
+6. CV Review
+Top of the page: a short summary strip (Total mentors, My active sessions, Completed sessions, CV reviews received).
+
+=== 2. FIND MENTOR TAB ===
+A. Search and filters
+- Search bar (name, company, designation, skill).
+- Sector filter chips (single or multiple select): Government, Private, Abroad, Higher Study, Research, Business / Entrepreneurship, Freelancing. "Abroad" and "Higher Study" must show alumni working or studying abroad (university name, country, program, e.g. MSc at TU Berlin).
+- Skill filter with category groups, searchable multi-select:
+  AI & Machine Learning, Data Science, Web Development, Mobile App Development, Cybersecurity, Networking & Cloud, Embedded Systems/IoT, Power & Energy, Civil/Structural, Textile Engineering, Business & Marketing, Research & Academic Writing, Competitive Exams (BCS, Bank), IELTS/GRE/Scholarship Prep.
+- Extra filters: Department, Batch, Mentoring topic (CV Review, Interview Prep, Higher Studies, Career Guidance, Project/Thesis Help), Availability (Available now / This week), Minimum rating.
+- Sort: Best match, Highest rated, Most sessions, Newest batch.
+- Active filters shown as removable chips + "Clear all" button. Show result count ("24 mentors found").
+- Grid/List toggle, pagination.
+
+B. Mentor card
+Photo, name, Verified badge, designation, company/university, sector tag, batch + department, top 3 skills, rating (stars + count), sessions completed, availability indicator, a "Match %" badge (calculate a mock match score from the student's profile department, interests, and skills), and buttons: "View Profile", "Request Mentorship". If a request already exists, show its current status badge instead of the button.
+
+C. Mentor profile page (/student/mentorship/mentor/:id)
+Verified badge, bio, current role, work experience timeline, education, full skills with endorsements, achievements, mentoring topics offered, available time slots (date/time picker with selectable slots), ratings and reviews from past students (with average rating breakdown 5-1 stars), stats (students mentored, sessions, response time), and a sticky "Request Mentorship" card. Also a "Message" button that opens the existing chat.
+
+=== 3. REQUEST MENTORSHIP FLOW ===
+Request modal / stepper:
+- Topic (CV Review, Interview Prep, Higher Studies, Career Guidance, Project/Thesis Help, Skill Roadmap)
+- Goal in one line + short message to mentor (with a character counter and a helpful template suggestion)
+- Preferred session mode: Chat / Voice Call / Video Call
+- Preferred time slot from mentor's available slots
+- Optional attachment (CV)
+- Review screen, then submit.
+After submit: status = PENDING, toast + notification to the alumni. Student can view, edit the message, or cancel the request while pending. Prevent duplicate pending requests to the same mentor for the same topic.
+
+=== 4. REQUEST LIFECYCLE (state machine, keep statuses consistent everywhere) ===
+PENDING → ACCEPTED (appears in Active Sessions) → IN_PROGRESS (session started) → COMPLETED
+PENDING → REJECTED (appears in Rejected tab with the mentor's reason; student can "Request another mentor" or "Re-apply later")
+PENDING → CANCELLED (by student)
+Status badge colors: Pending (amber), Accepted (green), In Progress (blue), Completed (navy), Rejected (red), Cancelled (gray).
+Each request card has a small status timeline and a history log (who did what and when).
+
+=== 5. ACTIVE SESSIONS TAB ===
+Session card: mentor, topic, date/time, mode, countdown timer ("Starts in 2h 15m"), buttons:
+- "Open Chat" (link to the existing chat with that mentor)
+- "Join Call" (opens a realistic mock call screen: video tiles, mute/camera/end buttons, session timer, a notes panel; no real WebRTC, mock only)
+- "Reschedule" (request a new slot)
+- "Cancel"
+- Shared session notes area (student can write notes; alumni can add action items).
+- Student clicks "Mark as Done" → confirmation modal → moves to Completed.
+
+=== 6. COMPLETED TAB ===
+List of completed sessions with: date, duration, topic, mentor, student's own notes, mentor's action items (checkbox list the student can tick off), and the rating they gave. After clicking "Mark as Done", force a feedback modal: star rating (1-5), tags (Helpful, Knowledgeable, Patient, Practical advice), written review, and "Would you recommend?" toggle. Provide "Book follow-up session" and "Download session summary" (mock) buttons. Rated sessions update the mentor's average rating live.
+
+=== 7. REJECTED TAB ===
+Show rejected requests with the mentor's reason, date, and suggestions: "Similar mentors you may like" (3 cards based on same skill/sector) and "Request again" button.
+
+=== 8. CV REVIEW SECTION (separate tab inside Mentorship) ===
+Student side:
+- "Request CV Review" button: choose a mentor (or "Any available mentor in my field"), target role/sector, upload CV (PDF; mock upload with file name/size/preview card), optional notes, and deadline preference.
+- CV versions: the student can upload multiple versions (v1, v2…) and see the improvement history.
+- A list of CV review requests with statuses: Submitted → In Review → Reviewed. Reviewed items open a "Review Result" page showing:
+  * Overall rating (1-5 stars) and a score out of 100
+  * Category ratings with progress bars: Formatting, Content Quality, Skills Presentation, Projects/Experience, Grammar/Language, ATS-Friendliness
+  * Strengths and Areas to Improve (bulleted)
+  * Section-wise comments (Summary, Education, Skills, Projects, Experience)
+  * Mentor's overall message
+  * "Re-submit improved CV" button (creates a new version linked to the earlier review) and "Say Thanks" button
+  * Comparison of score between versions (small recharts line or bar chart)
+Alumni side: see the pending CV review queue, open the CV (mock PDF viewer card), fill the rating form (the same categories, sliders or stars), write comments, and submit the review (notifies the student).
+
+=== 9. ALUMNI SIDE (/alumni/mentorship) ===
+Tabs: Requests (Pending), Upcoming Sessions, Completed, Declined, CV Reviews.
+- Request card: student info (name, dept, batch, skills, CV link), topic, message, preferred slot. Actions: Accept (confirm/adjust the time slot and add the meeting link or chat), Decline (reason dropdown + optional note), "Suggest another time".
+- Accepted sessions: Start Session, Open Chat, Join Call, add action items and private notes, and "Mark Session Complete" suggestion (the student's final "Done" completes it).
+- Mini stats: acceptance rate, students mentored, average rating, avg. response time.
+- Mentor availability toggle (mentoring on/off) and slot management reuse the existing Alumni Mentor Settings page. Just link to it.
+
+=== 10. EXTRA FEATURES TO MAKE IT BETTER ===
+- "Recommended for you" row at the top of Find Mentor (based on the student's department/skills).
+- Bookmark/Save mentor (heart icon) + "Saved Mentors" filter.
+- Mentor comparison (select up to 3 mentors, compare side by side).
+- Mentorship goals tracker: student sets a goal (e.g., "Get a Data Analyst job in 6 months") and sessions link to it with a progress bar.
+- Notifications triggered for: request sent, accepted, rejected, session reminder, session completed, CV reviewed. Integrate with the existing notification bell.
+- Achievement badges for students (First Session, 5 Sessions, CV Perfected) and for mentors (Top Mentor, Quick Responder).
+- Smart empty states with a CTA on every tab.
+- Basic report/block option for inappropriate behavior (mock).
+
+=== 11. MOCK DATA ===
+At least 24 mentors across all sectors and skills (Bangladeshi names; companies like Grameenphone, Brain Station 23, BJIT, bKash, Samsung R&D, BCS cadre officers, Bangladesh Bank, universities abroad), 15 mentorship requests in mixed statuses, 8 completed sessions with reviews, and 8 CV reviews with ratings. Ensure that filtering by "Government", "Private", "Abroad", "Higher Study" and by skills such as "AI & Machine Learning" each returns a visibly different, non-empty list.
+
+=== 12. QUALITY BAR ===
+- Everything is clickable and works end to end through the Demo Role Switcher: a student sends a request → switch to Alumni → accept → switch back to Student → session → Mark Done → rate → appears in Completed. The reject and CV review flows must also work.
+- Data persists after reload (localStorage).
+- No broken buttons, no "coming soon" placeholders, no console errors, full TypeScript types in /src/types/mentorship.ts.
+
+=== OUTPUT ===
+Output only new or changed files, with their paths. Then list the new routes and give a short test checklist for demonstrating the flow to a faculty panel.
+
+
+2.Alumni Directory & Profile Management Module:
+Student Id: 0802420105101029
+
+
+prompt:
+You are continuing work on the existing project "BAUST Career Bridge" (React + TypeScript + Vite + Tailwind + React Router + lucide-react + recharts, mock data only, localStorage persistence).
+
+=== STRICT SCOPE RULES ===
+- Work ONLY on the Alumni Directory module: (a) the student-facing directory and alumni profile view, and (b) the alumni's own "My Profile" editor.
+- Do NOT change the design system (navy #0F2A4A, army green #2E5E3E, gold #C9A227, Inter / Noto Sans Bengali), the folder structure, or other modules (Landing, Auth, Mentorship, Chat, Admin Desk, Admin pages). Reuse existing shared UI components (Button, Card, Badge, Modal, Table, Input, Avatar, Toast...). New components go only inside /src/components/directory/.
+- The Mentorship module already exists. Do NOT rebuild mentorship, chat or booking. Integrate by linking only:
+  * "Request Mentorship" button -> navigate to the existing mentorship request flow for that alumni id.
+  * "Message" button -> open the existing chat with that alumni.
+- Keep existing mock data untouched. Add new files only: /src/data/alumniProfiles.ts, /src/types/directory.ts, /src/hooks/useDirectoryStore.ts (React Context + localStorage). Use the SAME alumni ids as the existing alumni mock data so all modules stay linked. If an id does not exist, extend without breaking the old shape.
+- One page = one file: /src/pages/student/directory/ and /src/pages/alumni/profile/.
+- Add "// TODO: replace with API call" comments where the backend will go.
+- Fully responsive, loading skeletons, empty states, toasts, EN/বাংলা labels for main UI text.
+
+=== GOAL ===
+A rich, trustworthy alumni directory where every alumni has a complete professional profile (with their own photo) that they can edit themselves, and students can discover alumni by name, job position, sector, skill, expertise, CGPA, and mentoring activity.
+
+=== 1. DIRECTORY HOME (student): /student/directory ===
+
+A. Top insights strip (recharts, small): Total alumni, Verified alumni, Open to mentoring, Companies represented, mini donut "Alumni by sector", mini bar "Alumni by batch".
+
+B. Smart search
+- One search bar searching across: name, current job position/designation, company/university, sector, skills, interested fields, department.
+- Autocomplete dropdown grouped by type (People, Positions, Companies, Skills), recent searches, and "Popular searches" chips (e.g., "Data Scientist", "BCS Cadre", "Machine Learning").
+- Highlight matched text in results.
+
+C. Filters (sidebar on desktop, drawer on mobile)
+- Job Sector: Government, Private, Multinational, Abroad (job), Higher Study, Research/Academia, Business/Entrepreneurship, Freelancing.
+- Job position/role (searchable multi-select: Software Engineer, Data Analyst, Network Engineer, Lecturer, Civil Engineer, Cadre Officer, Banker, Founder, etc.)
+- Skills (grouped, searchable multi-select: AI & ML, Data Science, Web Dev, Mobile Dev, Cybersecurity, Cloud/Networking, Embedded/IoT, Power & Energy, Structural/Civil, Textile, Business & Marketing, Research & Academic Writing, Competitive Exams, IELTS/GRE Prep)
+- Interested fields (e.g., Robotics, FinTech, Renewable Energy, Public Policy)
+- Department, Batch range slider, Passing year, Company, Location (city/country)
+- CGPA range slider (only alumni who made CGPA visible are included when this filter is used)
+- Students consulted: minimum number slider
+- Toggles: Verified only, Open to mentoring, Open to referrals, Has hiring authority.
+- Sort: Best match, Most students consulted, Highest CGPA, Newest batch, Name A-Z.
+- Active filters as removable chips + "Clear all" + result count. Grid/List/Table view toggle, pagination. Save filter sets ("My saved searches").
+
+D. Browse shortcuts (above results): "Browse by Sector" tiles, "Browse by Batch" row, "Alumni of the Month" spotlight, "Recently joined", "Top consultants".
+
+E. Alumni card
+Photo, name, Verified badge, current designation + company, sector tag, department + batch, CGPA (only if visible), "Consulted X students" badge, top 3 expertise skills highlighted as gold chips, open-to-mentoring indicator, location. Buttons: "View Profile", "Message", bookmark (heart). Show a small "Match %" badge based on the logged-in student's department/skills.
+- Compare mode: select up to 3 alumni and see side-by-side (sector, role, skills, CGPA, students consulted).
+
+F. Extra views
+- Map/location view (simple grouped list by country/city with counts is enough; no real map API).
+- "Alumni at my target company" quick search.
+- Saved Alumni page (/student/directory/saved).
+
+=== 2. ALUMNI PROFILE VIEW (student side): /student/directory/:id ===
+- Header: large profile photo, cover banner, name, Verified badge (with "Verified by BAUST Admin on <date>" tooltip), current designation + company, location, sector tag, "Open to mentoring / referrals" badges, action buttons: Request Mentorship (link), Message (link), Save, Share profile (copy link), Report.
+- BAUST Information card: Student ID (partially masked, e.g., 15CSE***), Department, Batch, Admission year, Passing year, CGPA (with privacy rule), Degree, Thesis/Final project title and supervisor, Honors/Dean's list, clubs and activities, scholarships.
+- About / Bio and "Career journey" short story.
+- Current Job card: position, company, sector, joining date, location, short role description.
+- Full Work Experience timeline: all past jobs (title, organization, type: full-time/internship/part-time, period, location, responsibilities, key achievements). Show total experience years automatically.
+- Education timeline: BAUST + higher studies (university, country, program, year).
+- Skills: grouped; the top "Expertise" skills highlighted with level (Expert/Advanced/Intermediate), endorsement counts and an "Endorse" button for students (one endorsement per student per skill).
+- Interested Fields and Career Interests chips.
+- Certifications and Publications/Projects (title, link, year).
+- Achievements and awards.
+- Mentoring Impact card: students consulted (animated counter), sessions completed, average rating, response time, top topics helped with (donut chart), short testimonials from students.
+- Activity: "Recently active", profile last updated.
+- Contact & Links: LinkedIn, GitHub, portfolio, email (only if alumni allows). Respect privacy settings.
+- "Similar alumni" row (same sector or skills).
+- Print/Download profile as PDF (mock button).
+
+=== 3. ALUMNI OWN PROFILE EDITOR (alumni side): /alumni/my-profile ===
+- Profile completion meter (%) with checklist of missing sections and "Quick wins".
+- Photo: upload with preview, crop/zoom UI (mock), remove, or default initials avatar. Cover banner upload.
+- Editable sections (inline edit or section-wise modal with Save/Cancel and validation):
+  Basic info, Bio, BAUST academic info (CGPA, thesis, activities), Current job, Work experience (add/edit/delete/reorder), Education, Skills (add with level, mark up to 5 as "Expertise"), Interested fields, Certifications, Achievements, Projects/Publications, Social links.
+- Privacy controls per field: CGPA (Public / Students only / Hidden), Email, Phone, LinkedIn, Current employer, Location. Show a "Preview as Student" button that renders the exact student view.
+- Visibility toggles: Show in directory, Open to mentoring, Open to referrals, Open to hiring.
+- Any edit to sensitive fields (name, BAUST ID, department, batch, CGPA) sets the profile badge to "Re-verification pending" (mock admin approval), while other edits apply instantly. Show an edit history/audit list ("Last edited by you on...").
+- Unsaved-changes warning and autosave draft to localStorage.
+- Directory stats for the alumni: profile views (weekly chart), search appearances, saves, endorsements received.
+
+=== 4. EXTRA FEATURES (include) ===
+- Endorsements and student testimonials on profiles.
+- "Open to referrals" and "Hiring" badges for job-seeking students.
+- Alumni "Connect" request (lightweight, separate from mentorship): student sends a connect request, alumni accepts in /alumni/my-profile -> "Connections" tab.
+- Profile share link + QR code card (mock).
+- Notifications (existing bell): profile endorsed, new connect request, profile saved, re-verification result.
+- Fake-profile report flow: mock "Report profile" modal with reason.
+- Data privacy note on the directory: "Only verified BAUST alumni appear here."
+
+=== 5. MOCK DATA ===
+At least 30 alumni with FULL profiles: Bangladeshi names, own photos (use https://i.pravatar.cc or generated avatars), departments (CSE, EEE, Civil, Textile, BBA), batches 2015-2024, CGPAs between 2.8 and 3.95 with a few set to Hidden, 2-5 past jobs each, skills with levels, interested fields, students-consulted counts from 0 to 120, a mix of sectors (Government, Private, Multinational, Abroad, Higher Study, Research, Business, Freelancing) with companies like Grameenphone, Brain Station 23, BJIT, bKash, Samsung R&D, Bangladesh Bank, BCS cadre, TU Berlin, University of Alberta. Make sure each sector filter and skill filter (e.g., "AI & ML") returns a visibly different non-empty list.
+
+=== 6. QUALITY BAR ===
+- Everything works end to end through the Demo Role Switcher: Alumni edits profile and photo and privacy -> switch to Student -> directory and profile reflect the changes instantly (via localStorage store).
+- Search, every filter, sort, compare, save and endorse actually work together.
+- Full TypeScript types, no console errors, no "coming soon" placeholders.
+
+=== OUTPUT ===
+Output only new or changed files with their paths. Then list new routes and a short test checklist for demonstrating to a faculty panel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.Admin Desk
+Student Id: 0802420105101030
+
+prompt:
+You are continuing work on the existing project "BAUST Career Bridge" (React + TypeScript + Vite + Tailwind + React Router + lucide-react + recharts, mock data only, localStorage persistence).
+
+=== STRICT SCOPE RULES ===
+- Work ONLY on the University Admin Desk module: (a) the alumni-facing service desk (document requests, notices, vacancies, help), and (b) the admin-facing management panel for those requests, notices and vacancies.
+- Do NOT change the design system (navy #0F2A4A, army green #2E5E3E, gold #C9A227, Inter / Noto Sans Bengali), the folder structure, or other modules (Landing, Auth, Mentorship, Directory, Chat, Verification Queue, User Management). Reuse existing shared UI components (Button, Card, Badge, Modal, Table, Input, Avatar, Toast, Drawer...). New components go only inside /src/components/admindesk/.
+- Keep existing mock data untouched. Add new files only: /src/data/serviceRequests.ts, /src/data/serviceCatalog.ts, /src/data/notices.ts, /src/data/vacancies.ts, /src/types/admindesk.ts, /src/hooks/useAdminDeskStore.ts (React Context + localStorage). Use the SAME alumni/admin ids as the existing mock data.
+- One page = one file: /src/pages/alumni/admindesk/ and /src/pages/admin/admindesk/.
+- Notifications: integrate with the EXISTING notification bell (push new items into it via the shared notification store; do not rebuild it).
+- Add "// TODO: replace with API call" comments where the backend will go.
+- Fully responsive, loading skeletons, empty states, toasts, EN/বাংলা labels for main UI text.
+
+=== GOAL ===
+A complete, paperless "University Admin Desk" where alumni can request official documents and services, track every step, get notified instantly, and receive the result without visiting campus; and where university staff can manage the whole process (verify, approve, reject, deliver) and publish notices and teaching/job vacancies that alumni can see and apply to.
+
+=== 1. ALUMNI SIDE: /alumni/admin-desk ===
+
+Tabs (with count badges): Services | My Requests | Notices | Vacancies | My Applications | Help & FAQ
+
+A. Services tab (service catalog, powered by admin-managed catalog)
+Cards for each service showing: icon, name, description, fee (BDT), processing time, required documents, delivery options, and a "Request Now" button. Default services:
+- Academic Transcript (official, sealed)
+- Provisional Certificate
+- Original Certificate / Degree Copy
+- Testimonial
+- Recommendation Letter (for higher study / job, choose a teacher)
+- Medium of Instruction (MOI) Certificate (for foreign university applications)
+- Credential / Transcript Verification letter (sent directly to an employer or foreign university)
+- Duplicate ID Card / Certificate replacement
+- Syllabus / Course Outline copy
+- Other (custom request, free text)
+Search + category filter (Academic Documents, Verification, Letters, Others).
+
+B. Request form (stepper)
+Step 1 Service: choose service (multi-select to request several documents in one order).
+Step 2 Details: per document: number of copies, purpose (Higher Study, Job, Visa, Personal, Other), urgency (Normal / Urgent / Express with extra fee), semester/program info, and for Verification type: recipient name, organization, email/address. Auto-fill BAUST info from the alumni's profile.
+Step 3 Documents: upload supporting files (mock upload with file card, size, remove): ID card, application letter, payment slip, previous document if lost (with GD copy upload).
+Step 4 Delivery: Pickup from campus (choose date), Courier (address form, courier fee), Email soft copy/PDF, or Send directly to institution.
+Step 5 Payment (mockup): auto-calculated fee summary (document fee x copies + urgency + courier), payment method (bKash / Nagad / Bank deposit / Card), transaction ID + payment slip upload. No real payment.
+Step 6 Review and Submit: full summary, terms checkbox, submit.
+After submit: unique Tracking ID (e.g., BCB-2026-000123), success screen with "Download Receipt" (mock PDF) and "Track request".
+Save as Draft supported; validation on every step.
+
+C. My Requests tab
+Table/card list with Tracking ID, service(s), date, fee, payment status, status badge, with search, status filter, date filter. Row opens a detail page /alumni/admin-desk/requests/:id with:
+- Tracking timeline: Submitted -> Payment Verified -> Under Review -> Approved -> Processing/Printing -> Ready for Delivery -> Delivered/Collected (with timestamps and who handled it). Rejected or "Action Required" branch shown clearly in red/orange.
+- Admin remarks and messages thread (alumni and admin can exchange short messages on the request; "Action Required: upload missing document" prompts a re-upload button).
+- Documents: uploaded files, and the final deliverable (downloadable mock PDF with watermark "Digital copy") when ready.
+- Courier tracking number and expected delivery date.
+- Actions: Edit (only while Submitted), Cancel (before Approved), Re-apply (copy details from a rejected request), Raise Issue/Complaint, Rate the service (1-5 + comment after delivery), Download Receipt.
+
+D. Notices tab
+Notice board from the university: cards with category (Academic, Alumni Event, Convocation, Job/Recruitment, Policy, Urgent), title, date, attachments, pinned and urgent notices on top, search + category filter, read/unread state, "Mark all as read", and a notice detail drawer. Includes a "Upcoming alumni events" mini calendar with "Interested / Registering" RSVP button.
+
+E. Vacancies tab (university teaching/staff posts and job circulars)
+When the university needs a teacher or staff, admin posts a vacancy. Alumni can see: post title, department, type (Lecturer, Assistant Professor, Lab Assistant, Officer, Part-time/Guest Faculty), qualifications, CGPA requirement, number of posts, deadline (with "X days left" badge), salary range (optional), how to apply. Alumni can click "Apply Now" (CV upload mock + cover note + auto-filled BAUST profile), and track under My Applications tab: Applied -> Shortlisted -> Interview (date/time) -> Selected / Not Selected. Save/bookmark vacancy. Deadline passed = closed.
+
+F. Help & FAQ tab
+Searchable FAQ accordion (document processing time, fees, how to track, lost certificate process), contact info of Registrar/Controller of Exams office with working hours, and a "Contact Admin Desk" form that creates a support ticket (mock).
+
+=== 2. ADMIN SIDE: /admin/admin-desk ===
+
+Tabs/pages: Overview | Service Requests | Service Catalog | Notices | Vacancies and Applications | Settings
+
+A. Overview dashboard (recharts)
+Cards: New requests today, Pending verification, In processing, Ready for delivery, Overdue (SLA), Revenue collected (mock). Charts: requests over time (line), requests by service type (bar), status distribution (donut), average processing time. "Needs attention" list (overdue, urgent, action-required replies).
+
+B. Service Requests management
+- Table with filters (status, service, urgency, date range, payment status, assigned staff), search by tracking ID/name/BAUST ID, bulk select with bulk actions (assign, mark processing, export CSV (mock)).
+- Request detail drawer/page: alumni info and BAUST profile snapshot, auto-verification checklist (BAUST ID matches records, CGPA/graduation record found, payment verified, documents valid) with tick boxes, uploaded documents preview, payment slip preview with "Verify payment" action, internal notes (private to staff), assign to staff member.
+- Workflow actions with each step stamping the timeline: Verify -> Approve -> Start Processing -> Mark Ready -> Mark Delivered/Collected (add courier name/tracking no.). Upload the final digital document for alumni to download.
+- REJECT flow: reason dropdown (Invalid documents, Payment not verified, Record mismatch, Duplicate request, Other) + custom message required. On reject, the alumni gets a notification in the existing bell AND a message in the request thread with the reason and a "Re-apply" option.
+- "Request more information" action: sets status to Action Required and notifies the alumni.
+- Every action triggers a notification to the alumni (submitted, payment verified, approved, rejected, action required, ready, delivered).
+- Audit log of every change (who, what, when).
+- SLA timer: highlight requests exceeding expected processing time.
+
+C. Service Catalog management (admin CRUD)
+Add / edit / delete / enable-disable services: name, description, category, fee, urgency fee rules, processing days, required documents checklist, allowed delivery methods, per-copy pricing. Preview "how alumni sees it". Confirm modal on delete. Changes instantly reflect on the alumni Services tab (via shared store).
+
+D. Notices management (admin CRUD)
+Create / edit / delete / pin / schedule notices: title, rich-text-like body, category, audience (All, Alumni, Students, Specific batch/department), attachment upload (mock), urgent flag, publish now or schedule, expiry date. Draft / Published / Archived states, read-count analytics per notice. On publish, push notification to the selected audience via existing bell.
+
+E. Vacancies and Applications management (admin CRUD)
+Create / edit / close / delete vacancy posts (all fields above, deadline, number of posts). Applications table per vacancy: applicant profile snapshot (CGPA, batch, experience), CV preview, status change (Shortlist / Schedule interview (date, time, venue/online link) / Select / Reject with message), bulk shortlist, export (mock). Each status change notifies the applicant.
+
+F. Settings
+Office working hours, holiday calendar (requests submitted on holidays get adjusted SLA), staff list and roles (Registrar, Controller, Officer, Clerk) with permission toggles, notification templates editor (editable message templates for approve/reject/ready with placeholders like {name}, {trackingId}, {reason}), fee and courier charge configuration.
+
+=== 3. EXTRA FEATURES (include) ===
+- QR code on each digital document and a public "Verify Document" page (/verify-document) where an employer can enter a Tracking ID / document number and see "Valid / Not found" (mock). Great for fake-document prevention.
+- Auto-generated receipt and request summary (print-friendly page).
+- Email/SMS preview panel for admin: shows what message the alumni will receive.
+- Document request templates ("Save for next time") so the alumni can reorder previous requests in one click.
+- Reorder/Duplicate request shortcut.
+- Dark text-friendly print styles for receipts.
+- Smart suggestions: if the alumni selects "Higher Study", suggest MOI Certificate and Recommendation Letter.
+- Role-based access: Registrar can approve, Clerk can only prepare/deliver (mock permission check).
+
+=== 4. MOCK DATA ===
+At least 25 service requests across ALL statuses (Submitted, Payment Verified, Under Review, Action Required, Approved, Processing, Ready, Delivered, Rejected, Cancelled) with realistic Bangladeshi names and tracking IDs; 12 services in the catalog; 10 notices (various categories, 2 pinned, 1 urgent); 6 vacancies (some open, one closed) with 12 applications in different stages; 6 staff members; 15 notifications examples. Make sure every status filter returns a visibly different non-empty list.
+
+=== 5. QUALITY BAR ===
+- Everything works end to end through the Demo Role Switcher: Alumni submits a request -> switch to Admin -> verify payment -> approve (or reject with reason) -> mark ready -> delivered -> switch to Alumni -> sees timeline updated, the notification in the bell, and can download the digital copy / see the rejection reason and re-apply.
+- Admin publishes a notice and posts a vacancy -> Alumni sees them immediately -> applies -> Admin shortlists -> Alumni gets notified.
+- Admin edits the service catalog -> Alumni Services tab updates.
+- Data persists after reload (localStorage). Full TypeScript types. No console errors. No "coming soon" placeholders.
+
+=== OUTPUT ===
+Output only new or changed files with their paths. Then list the new routes and a short test checklist for demonstrating to a faculty panel.
+

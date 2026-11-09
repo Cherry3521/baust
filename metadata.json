@@ -1,0 +1,8 @@
+{
+  "name": "Remix BAUST Career Bridge",
+  "description": "Central Career Support \u0026 Administrative Network System connecting Alumni, Students, and University Administration at BAUST.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
